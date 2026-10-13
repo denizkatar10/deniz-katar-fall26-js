@@ -197,6 +197,8 @@ console.log("original array: ", full);
 // EXAMPLE OUTPUT: (if 'full' variable is ["dream", 19, "code", 24] and if 'part' variable is ["dream", 19, "code"])
 //  Q9 partial: false
 
+let part = ["dream", 19, "code"];
+
 function compareArrays(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
@@ -209,6 +211,10 @@ function compareArrays(arr1, arr2) {
   return true;
 }
 
+console.log("Q9 different: ", compareArrays(full, empty))
+console.log("Q9 partial: ", compareArrays(full, part))
+console.log("Q9 same: ", compareArrays(full, full))
+
 // ---------- QUESTION 10 ----------
 // Create a variable called 'numbers' and assign it an array with at least 3 numbers as elements (example: [10, 3, 4]). Write a function called 'calculateTotal' that takes one array parameter and loops through the array in order to return the sum of all the array elements. Hint: Start your total at 0 before looping
 
@@ -218,6 +224,8 @@ function compareArrays(arr1, arr2) {
 // EXAMPLE OUTPUT: (if the array assigned to variable 'numbers' is [3, 4, 2 ,8])
 //  Q10: 17
 
+let numbers = [3, 4, 2];
+
 function calculateTotal(arr) {
   let total = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -225,6 +233,8 @@ function calculateTotal(arr) {
   }
   return total;
 }
+
+console.log("Q10: ", calculateTotal(numbers));
 
 // ---------- QUESTION 11 ----------
 // Write two functions called 'findEvens' and 'findOdds' that each take one array parameter and each function returns a NEW Array of only the even or odd numbers as indicated. NOTE: Assigning an array to a new variable does not make a copy, it's another reference to the same array. To make a copy you can use the slice() method as in this example:
@@ -345,24 +355,31 @@ console.log("Q14: ", fizzBuzz());
 // There is no single example output for this question - the "right answer" is the structure of
 // your code itself, including the two commented-out lines that demonstrate scope errors.
 
-let globalVar = "globalVar";
+
+let globalVar = "globarVar";
 
 function testScope() {
-  let functionVar = "functionVar";
-  console.log("Inside function: ", globalVar); // Accessible
-  console.log("Inside function: ", functionVar); // Accessible
+  console.log(globalVar);
 
-  {
-    let blockVar = "blockVar";
-    console.log("Inside block: ", globalVar); // Accessible
-    console.log("Inside block: ", functionVar); // Accessible
-    console.log("Inside block: ", blockVar); // Accessible
+  function innerFunction() {
+    let functionVar = "functionVar";
+    console.log(functionVar);
+
+    {
+      let blockVar = "blockVar";
+      console.log(blockVar);
+    }
+
+    // console.log(blockVar); // Error: blockVar is out of scope
   }
 
-  // console.log("Outside block: ", blockVar); // Error: blockVar is not defined
+  innerFunction();
+
+  // console.log(functionVar); // Error: functionVar is out of scope
 }
 
 testScope();
+
 
 // ---------- GITHUB TASK ----------
 // This week, you cloned the new GitHub repository from week 1. 
