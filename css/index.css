@@ -119,12 +119,24 @@ section {
   margin: 0;
 }
 
-/* these two lists are empty for now */
+/* Remove default list styling */
 #skills-list,
 #projects-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+#skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#skills-list li {
+  background-color: #f4f1ea;
+  border-left: 4px solid #e09f3e;
+  padding: 8px 12px;
 }
 
 /* Connect */
@@ -144,4 +156,10 @@ section {
 .connect-links a:hover {
   background-color: #1b4965;
   color: #ffffff;
+}
+
+footer {
+  color: #777777;
+  font-size: 13px;
+  text-align: center;
 }
